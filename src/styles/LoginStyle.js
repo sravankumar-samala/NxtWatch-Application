@@ -7,6 +7,7 @@ export const LoginFormPage = styled.div`
   place-items: center;
   padding: 1em;
   background-color: var(--clr-bg-primary);
+  min-height: 100vh;
 `
 
 export const FormContainer = styled.div`
