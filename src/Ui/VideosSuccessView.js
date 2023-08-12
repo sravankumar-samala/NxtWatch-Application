@@ -1,19 +1,19 @@
 import {HomeVideosContainer, VideosListContainer} from '../styles/HomeStyle'
 import VideoItem from './videoItem'
+import convertJsonIntoJsObject from '../services/ConvertJsonToJsObject'
 
-function updateVideosList(videos) {
-  const updatedList = videos.map(obj => ({
-    id: obj.id,
-    thumbnailUrl: obj.thumbnail_url,
-    publishedAt: obj.published_at,
-    viewCount: obj.view_count,
-    title: obj.title,
-    name: obj.channel.name,
-    profileImageUrl: obj.channel.profile_image_url,
-  }))
+const updateVideosList = videos =>
+  videos.map(obj => convertJsonIntoJsObject(obj))
 
-  return updatedList
-}
+//   {
+//     id: obj.id,
+//     thumbnailUrl: obj.thumbnail_url,
+//     publishedAt: obj.published_at,
+//     viewCount: obj.view_count,
+//     title: obj.title,
+//     name: obj.channel.name,
+//     profileImageUrl: obj.channel.profile_image_url,
+//   }
 
 export default function VideosSuccessView({data, apiStatus}) {
   //   console.log(data)
