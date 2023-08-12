@@ -2,8 +2,8 @@ import {HomeVideosContainer, VideosListContainer} from '../styles/HomeStyle'
 import VideoItem from './videoItem'
 import convertJsonIntoJsObject from '../services/ConvertJsonToJsObject'
 
-const updateVideosList = videos =>
-  videos.map(obj => convertJsonIntoJsObject(obj))
+const updateVideosList = videosList =>
+  videosList.map(obj => convertJsonIntoJsObject(obj))
 
 //   {
 //     id: obj.id,
