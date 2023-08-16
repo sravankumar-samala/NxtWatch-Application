@@ -5,32 +5,32 @@ export const Navigation = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1em;
-  max-height: 90vh;
-  padding-top: 3em;
+  // gap: 10em;
+  // max-height: calc(90dvh + 1em);
+  height: calc(90dvh + 1em);
+  padding-top: 2em;
   position: sticky;
-  top: calc(50px + 1em);
+  top: 56.42px;
   transition: all 0.3s ease-in-out;
-  overflow: auto;
+  overflow-y: auto;
 
   @media (max-width: 767px) {
     background-color: var(--clr-bg-secondary);
-
+    height: 100dvh;
     padding-top: 70px;
-    width: min(25ch, 90%);
-    min-height: 100vh;
-    position: ${({navExpanded}) => (navExpanded ? 'fixed' : 'absolute')};
+    position: ${({$navExpanded}) => ($navExpanded ? 'fixed' : 'absolute')};
+
     top: 0;
     right: 0;
-    ${({navExpanded}) =>
-      navExpanded ? 'box-shadow: -5px 0 20px 5px #0000004d' : ''};
+    ${({$navExpanded}) =>
+      $navExpanded ? 'box-shadow: -5px 0 20px 5px #0000004d' : ''};
 
     /* transformations effects the sticky behaviour of header. */
     /*transform: ${({navExpanded}) =>
       navExpanded ? 'translateX(0)' : 'translateX(100%)'};*/
 
     /* Same transformation effect can also achieved without effecting header's sticky behaviour. */
-    width: ${({navExpanded}) => (navExpanded ? 'min(25ch, 90%)' : '0')};
+    width: ${({$navExpanded}) => ($navExpanded ? 'min(25ch, 90%)' : '0')};
   }
 `
 
@@ -61,7 +61,7 @@ export const NavLinksContainer = styled.ul`
   }
 `
 
-export const NavFooter = styled.div`
+export const NavFooter = styled.footer`
   display: grid;
   gap: 1em;
   padding: 1em;

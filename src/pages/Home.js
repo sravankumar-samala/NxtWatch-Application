@@ -16,23 +16,24 @@ import {Heading, Paragraph, Button} from '../styles/FailedComponentStyles'
 // main component starts here
 
 export default function Home() {
-  const [searchValue, setSearchValue] = useState('')
+  //   const [searchValue, setSearchValue] = useState('')
   const [fetchTrigger, setFetchTrigger] = useState(true)
-  const fetchTriggerRef = useRef(true)
+  const searchValueRef = useRef('')
+  //   const fetchTriggerRef = useRef(true)
   const {apiStatus, data, fetchData} = useFetch()
 
-  //   console.log(apiStatus, data)
+  //   console.log(searchValueRef.current.value)
 
   useEffect(() => {
-    if (fetchTrigger || fetchTriggerRef.current) {
-      const BaseUrl = `https://apis.ccbp.in/videos/all?search=${searchValue}`
+    if (fetchTrigger) {
+      const BaseUrl = `https://apis.ccbp.in/videos/all?search=${searchValueRef.current.value}`
       fetchData(BaseUrl)
       setFetchTrigger(false)
-      fetchTriggerRef.current = false
+      //   fetchTriggerRef.current = false
     }
 
     return () => setFetchTrigger(false)
-  }, [fetchTrigger, searchValue, fetchData])
+  }, [fetchTrigger, searchValueRef, fetchData])
 
   const handleSearch = e => {
     e.preventDefault()
@@ -40,7 +41,7 @@ export default function Home() {
   }
 
   const handleRetry = () => {
-    setSearchValue('')
+    searchValueRef.current.value = ''
     setFetchTrigger(true)
   }
 
@@ -69,16 +70,12 @@ export default function Home() {
       <Sidebar />
       <MainContainer>
         <FormContainer onSubmit={handleSearch}>
-          <input
-            type="text"
-            value={searchValue}
-            placeholder="Search"
-            onChange={e => setSearchValue(e.target.value)}
-          />
+          <input type="text" ref={searchValueRef} placeholder="Search" />
           <SearchButton type="submit" data-testid="searchButton">
             <BiSearch />
           </SearchButton>
         </FormContainer>
+
         {ApiStatusResults(apiStatus, SuccessView, FailedViewComponent)}
       </MainContainer>
     </AppLayoutContainer>

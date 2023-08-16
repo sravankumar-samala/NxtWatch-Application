@@ -15,7 +15,7 @@ export const HeaderContainer = styled.header`
 export const AppLogoContainer = styled.div`
   display: grid;
   place-items: center;
-  width: min(120px, 20vw);
+  width: min(120px, 30vw);
 `
 export const HeaderNavContainer = styled.div`
   display: flex;
@@ -37,6 +37,17 @@ export const ThemeButton = styled.button`
 `
 export const SmallScreenButton = styled(ThemeButton)`
   color: var(--clr-para-accent);
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+export const ProfileLogo = styled.img`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `
 
 export const LogoutButton = styled.button`
@@ -47,6 +58,10 @@ export const LogoutButton = styled.button`
   padding: 0.2em 1.1em;
   letter-spacing: 0.5px;
   font-weight: 600;
+
+  //   @media (max-width: 767px) {
+  //     display: none;
+  //   }
 `
 
 // popup container styles

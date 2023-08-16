@@ -23,6 +23,7 @@ export default function Login(props) {
   const passwordRef = useRef()
   const {isLightTheme} = useNxtContext()
   const jwtToken = Cookies.get('jwt_token')
+  //   console.log(isLightTheme)
 
   const handleShowPassword = () => setShowPassword(prev => !prev)
 
@@ -70,11 +71,11 @@ export default function Login(props) {
 
   return (
     <LoginFormPage>
-      <FormContainer lightTheme={isLightTheme}>
+      <FormContainer $lightTheme={isLightTheme}>
         <AppLogoContainer>
           <img
             src={isLightTheme ? logoUrls.light : logoUrls.dark}
-            alt="app logo"
+            alt="website logo"
           />
         </AppLogoContainer>
 
@@ -103,7 +104,7 @@ export default function Login(props) {
             Show Password
           </label>
           <button type="submit" className="btn button">
-            Submit
+            Login
           </button>
           {errorMsg && <ErrorMessage>*{errorMsg}</ErrorMessage>}
         </LoginForm>

@@ -10,17 +10,17 @@ export const navMenuLinks = [
     label: 'Home',
   },
   {
-    to: '/about',
+    to: '/trending',
     icon: <FaFire />,
     label: 'Trending',
   },
   {
-    to: '/program',
+    to: '/gaming',
     icon: <IoGameController />,
     label: 'Gaming',
   },
   {
-    to: '/softwares',
+    to: '/saved-videos',
     icon: <MdVideoLibrary />,
     label: 'Saved videos',
   },

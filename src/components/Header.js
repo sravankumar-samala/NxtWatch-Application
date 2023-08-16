@@ -1,8 +1,8 @@
-// import {useEffect} from 'react'
+// import React from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import {useMediaQuery} from 'react-responsive'
+// import {useMediaQuery} from 'react-responsive'
 import {BiSun} from 'react-icons/bi'
 import {IoMdMoon} from 'react-icons/io'
 import {GiHamburgerMenu} from 'react-icons/gi'
@@ -15,6 +15,7 @@ import {
   AppLogoContainer,
   HeaderNavContainer,
   ThemeButton,
+  ProfileLogo,
   LogoutButton,
   SmallScreenButton,
   StyledPopup,
@@ -27,7 +28,7 @@ function Header({history}) {
   const {isLightTheme, dispatch} = useNxtContext()
 
   // useMediaQuery hook is from external library "react-responsive"
-  const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'})
+  //   const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'})
 
   // Event handlers
   const handleNavToggle = () => dispatch({type: 'toggleNavExpanded'})
@@ -47,27 +48,36 @@ function Header({history}) {
         </ThemeButton>
 
         {/* hamburger and image displayed according to screen sizes */}
-        {isSmallScreen ? (
+        {/* {isSmallScreen ? (
           <SmallScreenButton type="button" onClick={handleNavToggle}>
             <GiHamburgerMenu />
           </SmallScreenButton>
         ) : (
-          <img
+          <ProfileLogo
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png "
             alt="profile"
           />
-        )}
+        )} */}
+        <SmallScreenButton type="button" onClick={handleNavToggle}>
+          <GiHamburgerMenu />
+        </SmallScreenButton>
+
+        <ProfileLogo
+          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png "
+          alt="profile"
+        />
 
         <StyledPopup
           // buttons displayed on different screen sizes
           trigger={
-            isSmallScreen ? (
-              <SmallScreenButton type="button">
-                <FiLogOut />
-              </SmallScreenButton>
-            ) : (
-              <LogoutButton type="button">Logout</LogoutButton>
-            )
+            // // // isSmallScreen ? (
+            // // <SmallScreenButton type="button">
+            // //   <FiLogOut />
+            // // </SmallScreenButton>
+            // // // ) : (
+            // <LogoutButton type="button">Logout</LogoutButton>
+            // // )
+            <LogoutButton type="button">Logout</LogoutButton>
           }
           modal
           nested
@@ -94,10 +104,8 @@ function AppLogo({isLightTheme}) {
 
 function LogoutPopup({close, history}) {
   const handleLogout = () => {
-    console.log('logout')
-    // Later logout functionality added here
-    close()
     Cookies.remove('jwt_token')
+    close()
     history.replace('/login')
   }
   return (

@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
-export const ContentContainerIm = styled.div``
+export const TrendingPageContainer = styled.div`
+  background-color: var(--clr-bg-primary);
+`
 
-export const ContainerImage = styled.div``
+export const TrendingPageTitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1em;
+`

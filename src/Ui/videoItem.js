@@ -9,15 +9,16 @@ import {
 } from '../styles/HomeStyle'
 
 export default function VideoItem({videoItemObj}) {
+  //   console.log(videoItemObj)
   const {
     id,
     thumbnailUrl,
-    profileImageUrl,
-    name,
+    channel,
     title,
     publishedAt,
     viewCount,
   } = videoItemObj
+  const {name, profileImageUrl} = channel
 
   return (
     <Link to={`/videos/${id}`}>

@@ -23,7 +23,7 @@ export const FormContainer = styled.div`
   //   border: 1px solid black;
 `
 export const AppLogoContainer = styled.div`
-  width: min(200px, 100%);
+  width: min(200px, 60%);
   //   margin-inline: auto;
 `
 
@@ -35,7 +35,7 @@ export const LoginForm = styled.form`
 
   & label[for='name'],
   & label[for='password'] {
-    font-size: clamp(0.8rem, 2vw, 1.3rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     font-weight: bold;
     margin-block: 5px;
     color: var(--clr-login-label);
@@ -65,7 +65,7 @@ export const LoginForm = styled.form`
   & button {
     border-radius: var(--border-radius-md);
     background-color: #3b82f6;
-    color: #f9f9f9;
+    color: #ffffff;
     font-weight: bold;
   }
 `

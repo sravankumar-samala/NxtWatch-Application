@@ -14,6 +14,7 @@ export default function NotFound() {
   const imageUrl = isLightTheme
     ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
     : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png'
+
   return (
     <Container>
       <InnerContainer isLightTheme={isLightTheme}>

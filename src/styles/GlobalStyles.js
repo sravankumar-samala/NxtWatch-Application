@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
 :root {
     &[data-theme='light']{
      --clr-bg-body: #ffffff;
-     --clr-bg-primary-home:  #f9f9f9;
+     --clr-bg-primary-home:  #f2f2f2;
      --clr-bg-primary: #f9f9f9;
      --clr-bg-secondary:  #ebebeb;
      --clr-para-accent: #232323;
@@ -15,6 +15,8 @@ const GlobalStyles = createGlobalStyle`
      --clr-h1: #2D2B3B;
      --clr-bg-nav-item: #d6d6d6;
      --clr-logout-btn: #3b82f6;
+     --color-red: #f52c30;
+
     }
 
     &[data-theme='dark']{
@@ -29,6 +31,8 @@ const GlobalStyles = createGlobalStyle`
      --clr-h1: #F9FAFC;
      --clr-bg-nav-item: #383838;
      --clr-logout-btn: #F9FAFC;
+     --color-red: #f52c30;
+
     }
 
 
@@ -194,22 +198,16 @@ img {
   }
 }
 `
+
 export const AppLayoutContainer = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
   position: relative;
-  //   overflow: hidden;
+  background-color: var(--clr-bg-primary);
 
   @media (min-width: 768px) {
     grid-template-columns: 25ch 1fr;
-    gap: 1em;
-    ${({isLoginRoute}) => !isLoginRoute && 'padding: 1em'};
-    // overflow-x: visible;
-
-    & > * {
-      border-radius: 10px;
-    }
   }
 `
 

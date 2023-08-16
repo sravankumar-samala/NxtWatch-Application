@@ -47,11 +47,15 @@ export const VideosListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.2em;
+
+  //   & a {
+  //     background-color: transparent;
+  //   }
 `
 
 export const VideoItemContainer = styled.li`
   //   border: 1px solid black;
-  aspect-ratio: 2/2.2;
+  aspect-ratio: 2;
   align-self: stretch;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -67,17 +71,17 @@ export const VideoItemContainer = styled.li`
 export const VideoItemContent = styled.div`
   display: flex;
   gap: 0.7em;
-  box-shadow: var(--shadow-md);
+  //   box-shadow: var(--shadow-md);
 
   & p {
-    margin-block: 5px;
+    margin-block: 0 5px;
   }
 `
 
 export const ProfileImageContainer = styled.div`
   aspect-ratio: 1;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   align-self: start;
   border-radius: 50%;
   box-shadow: var(--shadow-md);
@@ -89,9 +93,13 @@ export const InnerContentContainer = styled.div`
   align-items: center;
   color: var(--clr-para);
   margin-block-end: 10px;
+
+  & p {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+  }
 `
 export const Title = styled.p`
-  font-size: clamp(0.9rem, 3vw, 1.7rem);
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
   color: var(--clr-para-accent);
   font-weight: 600;
 
@@ -104,4 +112,5 @@ export const Title = styled.p`
 
 export const ChannelName = styled.p`
   color: var(--clr-para);
+  font-size: clamp(1rem, 4vw, 1.5rem);
 `

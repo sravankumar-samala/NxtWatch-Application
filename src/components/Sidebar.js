@@ -36,8 +36,8 @@ export default function Sidebar() {
 
   // Rendered nav links and social icon buttons from respective lists rather hard coding.
   return (
-    <Navigation navExpanded={isNavExpanded}>
-      <NavLinksContainer navExpanded={isNavExpanded}>
+    <Navigation $navExpanded={isNavExpanded}>
+      <NavLinksContainer $navExpanded={isNavExpanded}>
         {navMenuLinks.map(link => (
           <Link
             key={link.to}
@@ -53,7 +53,7 @@ export default function Sidebar() {
         ))}
       </NavLinksContainer>
 
-      <NavFooter>
+      <NavFooter $navExpanded={isNavExpanded}>
         <h3>CONTACT US</h3>
         <SocialIconsContainer>
           {socialMediaButtons.map(button => (

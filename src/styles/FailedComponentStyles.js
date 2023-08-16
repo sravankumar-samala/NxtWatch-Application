@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: grid;
   place-items: center;
   background-color: var(--clr-bg-secondary);
-  //   min-height: 100vh;
+  min-height: 100vh; //remove
 `
 export const InnerContainer = styled.div`
   display: grid;

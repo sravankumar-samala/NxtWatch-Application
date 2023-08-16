@@ -14,6 +14,7 @@ const reducer = (state, action) => {
     case 'toggleTheme':
       //   return {...state, isLightTheme: !state.isLightTheme}
       newIsLightTheme = !state.isLightTheme
+      //   console.log(newIsLightTheme)
       localStorage.setItem('isLightTheme', newIsLightTheme ? 'true' : 'false')
       return {...state, isLightTheme: newIsLightTheme}
     case 'addToSavedVideos':
