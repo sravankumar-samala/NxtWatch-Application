@@ -5,6 +5,7 @@ import {
   Navigation,
   NavLinksContainer,
   NavFooter,
+  NavFooterTitle,
   SocialIconsContainer,
   SocialButton,
 } from '../styles/SidebarStyles'
@@ -54,7 +55,7 @@ export default function Sidebar() {
       </NavLinksContainer>
 
       <NavFooter $navExpanded={isNavExpanded}>
-        <h3>CONTACT US</h3>
+        <NavFooterTitle>CONTACT US</NavFooterTitle>
         <SocialIconsContainer>
           {socialMediaButtons.map(button => (
             <SocialButton key={button.alt}>

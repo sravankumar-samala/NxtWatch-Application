@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding-block: 2em;
   display: grid;
   place-items: center;
-  background-color: var(--clr-bg-secondary);
-  min-height: 100vh; //remove
+  //   background-color: var(--clr-bg-pr);
+  //   min-height: 100vh;
 `
 export const InnerContainer = styled.div`
   display: grid;
@@ -15,8 +14,10 @@ export const InnerContainer = styled.div`
     width: 400px;
   }
 `
+
 export const Heading = styled.h1`
   color: var(--clr-h1);
+  margin-block: 20px 10px;
 `
 
 export const Paragraph = styled.p`

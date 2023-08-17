@@ -1,30 +1,30 @@
 import {HomeVideosContainer, VideosListContainer} from '../styles/HomeStyle'
 import VideoItem from './videoItem'
 import convertJsonIntoJsObject from '../services/ConvertJsonToJsObject'
+import FailedView from './FailedComponent'
+import {Heading, Paragraph, Button} from '../styles/FailedComponentStyles'
 
 const updateVideosList = videosList =>
   videosList.map(obj => convertJsonIntoJsObject(obj))
 
-//   {
-//     id: obj.id,
-//     thumbnailUrl: obj.thumbnail_url,
-//     publishedAt: obj.published_at,
-//     viewCount: obj.view_count,
-//     title: obj.title,
-//     name: obj.channel.name,
-//     profileImageUrl: obj.channel.profile_image_url,
-//   }
-
-export default function VideosSuccessView({data, apiStatus}) {
-  //   console.log(data)
-
+export default function VideosSuccessView({data, apiStatus, retry}) {
   const videosList =
     apiStatus === 'Success' ? updateVideosList(data.videos) : []
+
+  const NoDataView = () => (
+    <FailedView failureType="noData">
+      <Heading>No Search results found</Heading>
+      <Paragraph>Try different keywords or remove search filter</Paragraph>
+      <Button type="button" onClick={retry}>
+        Retry
+      </Button>
+    </FailedView>
+  )
 
   return (
     <HomeVideosContainer>
       {videosList.length === 0 ? (
-        <h1>No Data</h1>
+        <NoDataView />
       ) : (
         <VideosListContainer>
           {videosList.map(each => (

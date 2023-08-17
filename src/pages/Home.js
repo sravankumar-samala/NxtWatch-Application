@@ -1,6 +1,5 @@
 import {useState, useEffect, useRef} from 'react'
 import {BiSearch} from 'react-icons/bi'
-// import fetchVideosApi from '../services/FetchVideosApi'
 import useFetch from '../hooks/useFetch'
 import ApiStatusResults from '../services/apiStatusResult'
 import {AppLayoutContainer} from '../styles/GlobalStyles'
@@ -9,27 +8,20 @@ import Sidebar from '../components/Sidebar'
 import VideosSuccessView from '../Ui/VideosSuccessView'
 import FailedView from '../Ui/FailedComponent'
 // import {useNxtContext} from '../context/GlobalContext'
-// import {MainContainer} from '../styles/GlobalStyles'
 import {MainContainer, FormContainer, SearchButton} from '../styles/HomeStyle'
 import {Heading, Paragraph, Button} from '../styles/FailedComponentStyles'
 
 // main component starts here
-
 export default function Home() {
-  //   const [searchValue, setSearchValue] = useState('')
   const [fetchTrigger, setFetchTrigger] = useState(true)
   const searchValueRef = useRef('')
-  //   const fetchTriggerRef = useRef(true)
   const {apiStatus, data, fetchData} = useFetch()
-
-  //   console.log(searchValueRef.current.value)
 
   useEffect(() => {
     if (fetchTrigger) {
       const BaseUrl = `https://apis.ccbp.in/videos/all?search=${searchValueRef.current.value}`
       fetchData(BaseUrl)
       setFetchTrigger(false)
-      //   fetchTriggerRef.current = false
     }
 
     return () => setFetchTrigger(false)
@@ -47,12 +39,12 @@ export default function Home() {
 
   // This is to pass component as a function parameter which requires some props
   const SuccessView = () => (
-    <VideosSuccessView data={data} apiStatus={apiStatus} />
+    <VideosSuccessView data={data} apiStatus={apiStatus} retry={handleRetry} />
   )
 
   // Re-assigning failure component to have an individual content for every failed component
-  const FailedViewComponent = () => (
-    <FailedView>
+  const ApiFailedView = () => (
+    <FailedView failureType="apiFailure">
       <Heading>Oops! Something Went Wrong</Heading>
       <Paragraph>
         We are having some trouble to complete your request.
@@ -76,7 +68,7 @@ export default function Home() {
           </SearchButton>
         </FormContainer>
 
-        {ApiStatusResults(apiStatus, SuccessView, FailedViewComponent)}
+        {ApiStatusResults(apiStatus, SuccessView, ApiFailedView)}
       </MainContainer>
     </AppLayoutContainer>
   )

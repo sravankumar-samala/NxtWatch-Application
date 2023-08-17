@@ -1,29 +1,37 @@
 import {Container, InnerContainer} from '../styles/FailedComponentStyles'
 import {useNxtContext} from '../context/GlobalContext'
+import {
+  noDataImage,
+  apiFailedImages,
+  noSavedVideosImage,
+} from '../data/failedComponentData'
 
-const noDataImage =
-  'https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png'
-
-const apiFailedImages = {
-  light:
-    'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png',
-  dark:
-    'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png',
-}
-
-export default function FailedView({noData, children}) {
+export default function FailedView({failureType, children}) {
   const {isLightTheme} = useNxtContext()
 
-  const themeImage = isLightTheme ? apiFailedImages.light : apiFailedImages.dark
+  const apiFailedImg = isLightTheme
+    ? apiFailedImages.light
+    : apiFailedImages.dark
+
+  const getFailureImageData = type => {
+    switch (type) {
+      case 'apiFailure':
+        return [apiFailedImg, 'failure view']
+      case 'noSavedVideos':
+        return [noSavedVideosImage, 'no saved videos']
+      case 'noData':
+        return [noDataImage, 'not found']
+      default:
+        return null
+    }
+  }
+
+  const [imageSrc, altMsg] = getFailureImageData(failureType)
 
   return (
     <Container>
       <InnerContainer>
-        <img
-          src={noData ? noDataImage : themeImage}
-          alt={noData ? 'not found' : 'failure view'}
-        />
-
+        <img src={imageSrc} alt={altMsg} />
         {children}
       </InnerContainer>
     </Container>

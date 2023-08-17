@@ -54,6 +54,7 @@ export const NavLinksContainer = styled.ul`
   & .activeNavLink svg {
     color: #f52c30;
   }
+
   & li {
     display: flex;
     align-items: center;
@@ -66,16 +67,18 @@ export const NavFooter = styled.footer`
   gap: 1em;
   padding: 1em;
 
-  & h3,
-  p {
-    color: var(--clr-h1);
-  }
-
   & p {
-    font-size: clamp(1.3rem, 2vw, 1.7rem);
     font-weight: bold;
     color: var(--clr-para-accent);
   }
+
+  & p:last-child {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+  }
+`
+
+export const NavFooterTitle = styled.p`
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
 `
 
 export const SocialIconsContainer = styled.div`

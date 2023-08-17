@@ -2,11 +2,12 @@ import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   display: grid;
+  gap: 2em;
   grid-template-rows: auto 1fr;
 `
 
 export const PageTitleContainer = styled.div`
-  --logo-size: clamp(1.3em, 3vw, 2em);
+  --logo-size: clamp(2em, 5vw, 2.3em);
   display: flex;
   align-items: center;
   gap: 1em;
@@ -17,6 +18,13 @@ export const PageTitleContainer = styled.div`
     width: var(--logo-size);
     height: var(--logo-size);
     color: var(--color-red);
+    background-color: var(--clr-bg-nav-item);
+    border-radius: 50%;
+    padding: 0.5em;
+
+    @media (max-width: 768px) {
+      padding: 0.3em;
+    }
   }
 
   @media (min-width: 768px) {

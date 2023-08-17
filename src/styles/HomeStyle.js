@@ -26,7 +26,6 @@ export const FormContainer = styled.form`
   & input {
     flex-grow: 1;
     color: var(--clr-para-accent);
-    // background-color: var(--clr-bg-input);
     background-color: transparent;
     border-right: 1px solid var(--clr-bg-secondary);
   }
@@ -47,14 +46,9 @@ export const VideosListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.2em;
-
-  //   & a {
-  //     background-color: transparent;
-  //   }
 `
 
 export const VideoItemContainer = styled.li`
-  //   border: 1px solid black;
   aspect-ratio: 2;
   align-self: stretch;
   display: grid;
@@ -68,14 +62,9 @@ export const VideoItemContainer = styled.li`
   }
 `
 
-export const VideoItemContent = styled.div`
+export const VideoItemContentContainer = styled.div`
   display: flex;
   gap: 0.7em;
-  //   box-shadow: var(--shadow-md);
-
-  & p {
-    margin-block: 0 5px;
-  }
 `
 
 export const ProfileImageContainer = styled.div`
@@ -85,32 +74,4 @@ export const ProfileImageContainer = styled.div`
   align-self: start;
   border-radius: 50%;
   box-shadow: var(--shadow-md);
-`
-
-export const InnerContentContainer = styled.div`
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  color: var(--clr-para);
-  margin-block-end: 10px;
-
-  & p {
-    font-size: clamp(1rem, 4vw, 1.5rem);
-  }
-`
-export const Title = styled.p`
-  font-size: clamp(1.2rem, 5vw, 1.7rem);
-  color: var(--clr-para-accent);
-  font-weight: 600;
-
-  //below code restricts title to occupy max 2 lines
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-`
-
-export const ChannelName = styled.p`
-  color: var(--clr-para);
-  font-size: clamp(1rem, 4vw, 1.5rem);
 `

@@ -1,44 +1,28 @@
 import {Link} from 'react-router-dom'
+import VideoItemContent from './VideoItemContent'
 import {
   VideoItemContainer,
-  VideoItemContent,
+  VideoItemContentContainer,
   ProfileImageContainer,
-  Title,
-  ChannelName,
-  InnerContentContainer,
 } from '../styles/HomeStyle'
 
 export default function VideoItem({videoItemObj}) {
   //   console.log(videoItemObj)
-  const {
-    id,
-    thumbnailUrl,
-    channel,
-    title,
-    publishedAt,
-    viewCount,
-  } = videoItemObj
-  const {name, profileImageUrl} = channel
+  const {id, thumbnailUrl, channel} = videoItemObj
+  const {profileImageUrl} = channel
 
   return (
     <Link to={`/videos/${id}`}>
       <VideoItemContainer>
         <div>
-          <img src={thumbnailUrl} alt="thumbnail" />
+          <img src={thumbnailUrl} alt="video thumbnail" />
         </div>
-        <VideoItemContent>
+        <VideoItemContentContainer>
           <ProfileImageContainer>
             <img src={profileImageUrl} alt="profile" />
           </ProfileImageContainer>
-          <div>
-            <Title>{title}</Title>
-            <ChannelName>{name}</ChannelName>
-            <InnerContentContainer>
-              <p>{viewCount}</p>
-              <p>{publishedAt}</p>
-            </InnerContentContainer>
-          </div>
-        </VideoItemContent>
+          <VideoItemContent videoItemObj={videoItemObj} />
+        </VideoItemContentContainer>
       </VideoItemContainer>
     </Link>
   )

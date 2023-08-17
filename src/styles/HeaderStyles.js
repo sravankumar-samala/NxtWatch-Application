@@ -17,7 +17,7 @@ export const AppLogoContainer = styled.div`
   place-items: center;
   width: min(120px, 30vw);
 `
-export const HeaderNavContainer = styled.div`
+export const HeaderNavContainer = styled.nav`
   display: flex;
   align-items: center;
   gap: clamp(1em, 2vw, 2em);
