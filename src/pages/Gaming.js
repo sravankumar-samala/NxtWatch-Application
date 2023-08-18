@@ -1,18 +1,14 @@
-import {AppLayoutContainer} from '../styles/GlobalStyles'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
-// import {
-//   GamingPageContainer,
-//   GamingPageTitleContainer,
-// } from '../styles/GamingStyles'
-import PageLayoutContainer from '../Ui/PageLayoutContainer'
+import TrendingGamingUnifiedComponent from '../Ui/TrendingGamingUnifiedComponent'
+import GamingSuccessView from '../Ui/GamingSuccessView'
 
 export default function Gaming() {
+  const url = 'https://apis.ccbp.in/videos/gaming'
+
   return (
-    <AppLayoutContainer data-testid="gaming">
-      <Header />
-      <Sidebar />
-      <PageLayoutContainer pageName="Gaming" />
-    </AppLayoutContainer>
+    <TrendingGamingUnifiedComponent
+      url={url}
+      renderSuccessView={data => <GamingSuccessView videosData={data} />}
+      componentName="Gaming"
+    />
   )
 }

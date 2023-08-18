@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import ConvertJsonToJsObject from '../services/ConvertJsonToJsObject'
-import VideoItemContent from './VideoItemContent'
+import VideoItemContent from './VideoItemContent' // for common content pattern in videoItem cards
 import {
   VideosListContainer,
   VideoListItem,
@@ -11,7 +11,7 @@ import {
 
 export default function TrendingSavedUnifiedSuccessView({videosData}) {
   const videosList = ConvertJsonToJsObject(videosData.videos)
-  console.log(videosList)
+  //   console.log(videosList)
 
   return (
     <VideosListContainer>

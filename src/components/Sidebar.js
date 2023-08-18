@@ -3,6 +3,7 @@ import {Link, useLocation} from 'react-router-dom'
 import {navMenuLinks, socialMediaButtons} from '../data/sidebarData'
 import {
   Navigation,
+  SidebarOverlay,
   NavLinksContainer,
   NavFooter,
   NavFooterTitle,
@@ -18,54 +19,46 @@ export default function Sidebar() {
   // Function to check if a link is active
   const isLinkActive = linkPath => location.pathname === linkPath
 
-  //   useEffect(() => {
-  //     if (isNavExpanded) {
-  //       document.body.style.overflow = 'hidden'
-  //     } else {
-  //       document.body.style.overflow = 'auto'
-  //     }
-
-  //     // Cleanup the effect
-  //     return () => {
-  //       document.body.style.overflow = 'auto'
-  //     }
-  //   }, [isNavExpanded])
-
   const handleNavToggle = () => {
-    dispatch({type: 'toggleNavExpanded'})
+    if (window.innerWidth < 768) {
+      dispatch({type: 'toggleNavExpanded'})
+    }
   }
 
   // Rendered nav links and social icon buttons from respective lists rather hard coding.
   return (
-    <Navigation $navExpanded={isNavExpanded}>
-      <NavLinksContainer $navExpanded={isNavExpanded}>
-        {navMenuLinks.map(link => (
-          <Link
-            key={link.to}
-            to={link.to}
-            className={isLinkActive(link.to) ? 'activeNavLink' : ''}
-            onClick={handleNavToggle}
-          >
-            <li>
-              {link.icon}
-              <span>{link.label}</span>
-            </li>
-          </Link>
-        ))}
-      </NavLinksContainer>
-
-      <NavFooter $navExpanded={isNavExpanded}>
-        <NavFooterTitle>CONTACT US</NavFooterTitle>
-        <SocialIconsContainer>
-          {socialMediaButtons.map(button => (
-            <SocialButton key={button.alt}>
-              <img src={button.src} alt={button.alt} />
-            </SocialButton>
+    <>
+      {isNavExpanded && <SidebarOverlay onClick={handleNavToggle} />}
+      <Navigation $navExpanded={isNavExpanded}>
+        <NavLinksContainer $navExpanded={isNavExpanded}>
+          {navMenuLinks.map(link => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={isLinkActive(link.to) ? 'activeNavLink' : ''}
+              onClick={handleNavToggle}
+            >
+              <li>
+                {link.icon}
+                <span>{link.label}</span>
+              </li>
+            </Link>
           ))}
-        </SocialIconsContainer>
-        <p>Enjoy! Now to see your channels and recommendations!</p>
-      </NavFooter>
-    </Navigation>
+        </NavLinksContainer>
+
+        <NavFooter $navExpanded={isNavExpanded}>
+          <NavFooterTitle>CONTACT US</NavFooterTitle>
+          <SocialIconsContainer>
+            {socialMediaButtons.map(button => (
+              <SocialButton key={button.alt}>
+                <img src={button.src} alt={button.alt} />
+              </SocialButton>
+            ))}
+          </SocialIconsContainer>
+          <p>Enjoy! Now to see your channels and recommendations!</p>
+        </NavFooter>
+      </Navigation>
+    </>
   )
 }
 

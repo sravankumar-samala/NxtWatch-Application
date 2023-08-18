@@ -46,6 +46,10 @@ export const VideosListContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: 1.2em;
+
+  @media (max-width: 532px) {
+    gap: 0.5em;
+  }
 `
 
 export const VideoItemContainer = styled.li`
@@ -59,6 +63,10 @@ export const VideoItemContainer = styled.li`
     aspect-ratio: 16/9;
     width: 100%;
     border-radius: 10.56px;
+  }
+
+  @media (max-width: 532px) {
+    gap: 0.5em;
   }
 `
 

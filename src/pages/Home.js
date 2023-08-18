@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect, useRef, useMemo} from 'react'
 import {BiSearch} from 'react-icons/bi'
 import useFetch from '../hooks/useFetch'
 import ApiStatusResults from '../services/apiStatusResult'
@@ -25,7 +25,7 @@ export default function Home() {
     }
 
     return () => setFetchTrigger(false)
-  }, [fetchTrigger, searchValueRef, fetchData])
+  }, [fetchTrigger, searchValueRef, fetchData, data])
 
   const handleSearch = e => {
     e.preventDefault()
@@ -34,10 +34,10 @@ export default function Home() {
 
   const handleRetry = () => {
     searchValueRef.current.value = ''
+    fetchData.current.value = null
     setFetchTrigger(true)
   }
 
-  // This is to pass component as a function parameter which requires some props
   const SuccessView = () => (
     <VideosSuccessView data={data} apiStatus={apiStatus} retry={handleRetry} />
   )

@@ -5,9 +5,9 @@ export const ContentContainer = styled.div`
 `
 
 export const Title = styled.p`
-  font-size: clamp(1.2rem, 5vw, 1.7rem);
-  color: var(--clr-para-accent);
+  font-size: var(--fs-h3);
   font-weight: 600;
+  color: var(--clr-para-accent);
 
   //below code restricts title to occupy max 2 lines
   display: -webkit-box;
@@ -18,7 +18,7 @@ export const Title = styled.p`
 
 export const ChannelName = styled.p`
   color: var(--clr-para);
-  font-size: clamp(1.35rem, 4vw, 1.6rem);
+  font-size: var(--fs-para1);
 
   @media (min-width: 576px) {
     margin-block: 5px;
@@ -33,7 +33,7 @@ export const InnerContentContainer = styled.div`
   margin-block-end: 10px;
 
   & p {
-    font-size: clamp(1rem, 4vw, 1.5rem);
+    font-size: var(--fs-para2);
     position: relative;
   }
 

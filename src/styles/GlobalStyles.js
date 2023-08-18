@@ -32,8 +32,13 @@ const GlobalStyles = createGlobalStyle`
      --clr-bg-nav-item: #383838;
      --clr-logout-btn: #F9FAFC;
      --color-red: #f52c30;
-
     }
+
+    /* video content fonts  */
+    --fs-h3 : clamp(1.3rem, 5vw, 1.7rem);
+    --fs-h3-gaming: clamp(1.3rem, 5vw, 2rem);
+    --fs-para1: clamp(1.35rem, 4vw, 1.6rem);
+    --fs-para2: clamp(1rem, 4vw, 1.5rem);
 
 
   /* Indigo */
@@ -115,6 +120,23 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   font-size: 1.6rem;
+
+}
+
+::-webkit-scrollbar{
+    width: 9px;
+    border-radius: 1em;
+}
+::-webkit-scrollbar-track{
+    background-color: var(--clr-bg-primary);
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--clr-para);
+    border-radius: 1em;
+    border: 2px solid var(--clr-bg-primary);
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-red);
 }
 
 input,
@@ -124,7 +146,6 @@ select {
   font: inherit;
   color: inherit;
 }
-
 input{
     padding: .5em;
     border: none;

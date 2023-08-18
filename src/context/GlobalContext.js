@@ -43,6 +43,17 @@ const NxtWatchContextProvider = ({children}) => {
     [isLightTheme],
   )
 
+  useEffect(() => {
+    const bodyEl = document.body
+    if (isNavExpanded) {
+      bodyEl.classList.add('hide-body-overflow')
+      bodyEl.style.paddingInlineEnd = '9px'
+    } else {
+      bodyEl.classList.remove('hide-body-overflow')
+      bodyEl.style.paddingInlineEnd = '0'
+    }
+  }, [isNavExpanded])
+
   return (
     <NxtWatchContext.Provider
       value={{

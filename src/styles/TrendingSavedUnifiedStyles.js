@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const VideosListContainer = styled.ul`
-  min-height: 100dvh;
   display: grid;
   gap: 0.5em;
 
@@ -27,7 +26,7 @@ export const VideoItemContentContainer = styled.div`
   align-items: flex-start;
 
   @media (max-width: 575px) {
-    padding-inline-start: 1em;
+    padding-inline: 1em;
   }
 `
 

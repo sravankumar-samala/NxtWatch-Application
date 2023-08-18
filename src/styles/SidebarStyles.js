@@ -17,7 +17,7 @@ export const Navigation = styled.nav`
   @media (max-width: 767px) {
     background-color: var(--clr-bg-secondary);
     height: 100dvh;
-    padding-top: 70px;
+    padding-top: 80px;
     position: ${({$navExpanded}) => ($navExpanded ? 'fixed' : 'absolute')};
 
     top: 0;
@@ -31,6 +31,21 @@ export const Navigation = styled.nav`
 
     /* Same transformation effect can also achieved without effecting header's sticky behaviour. */
     width: ${({$navExpanded}) => ($navExpanded ? 'min(25ch, 90%)' : '0')};
+    z-index: 99;
+  }
+`
+
+export const SidebarOverlay = styled.div`
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9;
+  transition: background-color 0.3s ease-in-out;
+  //   cursor: url('https://cdn.pixabay.com/photo/2022/03/23/02/48/cross-7086307_1280.png');
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `
 

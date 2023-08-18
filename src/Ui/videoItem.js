@@ -9,7 +9,7 @@ import {
 export default function VideoItem({videoItemObj}) {
   //   console.log(videoItemObj)
   const {id, thumbnailUrl, channel} = videoItemObj
-  const {profileImageUrl} = channel
+  const profileImageUrl = channel?.profileImageUrl || ''
 
   return (
     <Link to={`/videos/${id}`}>
