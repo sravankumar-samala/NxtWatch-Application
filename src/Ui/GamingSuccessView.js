@@ -4,7 +4,7 @@ import {GamingVideosListContainer, VideosListItem} from '../styles/GamingStyles'
 
 export default function GamingSuccessView({videosData}) {
   const videosList = convertJsonToJsObject(videosData.videos)
-  console.log(videosList)
+  //   console.log(videosList)
 
   return (
     <GamingVideosListContainer>

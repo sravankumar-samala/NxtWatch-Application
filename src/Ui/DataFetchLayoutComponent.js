@@ -7,13 +7,16 @@ import PageLayoutContainer from './PageLayoutContainer'
 import apiStatusResults from '../services/apiStatusResult'
 import FailedView from './FailedComponent'
 import {Heading, Paragraph, Button} from '../styles/FailedComponentStyles'
+import {VideoItemDetailsContainer} from '../styles/VideoItemDetailsStyles'
 
-export default function TrendingGamingUnifiedComponent({
+export default function DataFetchLayoutComponent({
   url,
+  videoItemRoute,
   renderSuccessView,
   componentName,
 }) {
   const {apiStatus, data, fetchData} = useFetch()
+  console.log(data)
 
   useEffect(() => {
     fetchData(url)
@@ -40,9 +43,15 @@ export default function TrendingGamingUnifiedComponent({
     <AppLayoutContainer data-testid={componentName.toLowerCase()}>
       <Header />
       <Sidebar />
-      <PageLayoutContainer pageName={componentName}>
-        {apiStatusResults(apiStatus, SuccessView, ApiFailureView)}
-      </PageLayoutContainer>
+      {!videoItemRoute ? (
+        <PageLayoutContainer pageName={componentName}>
+          {apiStatusResults(apiStatus, SuccessView, ApiFailureView)}
+        </PageLayoutContainer>
+      ) : (
+        <VideoItemDetailsContainer>
+          {apiStatusResults(apiStatus, SuccessView, ApiFailureView)}
+        </VideoItemDetailsContainer>
+      )}
     </AppLayoutContainer>
   )
 }

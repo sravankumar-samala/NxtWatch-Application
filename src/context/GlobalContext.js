@@ -28,7 +28,7 @@ const reducer = (state, action) => {
 }
 
 const NxtWatchContextProvider = ({children}) => {
-  //   const [isLightTheme, changeTheme] = useState(true)
+  //   const [navToggledBack, setNavToggledBack] = useState(false)
   const [{isLightTheme, savedVideosList, isNavExpanded}, dispatch] = useReducer(
     reducer,
     initialState,
@@ -45,7 +45,9 @@ const NxtWatchContextProvider = ({children}) => {
 
   useEffect(() => {
     const bodyEl = document.body
-    if (isNavExpanded) {
+    const mediaQuery = window.matchMedia('(max-width: 767px)')
+
+    if (isNavExpanded && mediaQuery.matches) {
       bodyEl.classList.add('hide-body-overflow')
       bodyEl.style.paddingInlineEnd = '9px'
     } else {
@@ -53,6 +55,28 @@ const NxtWatchContextProvider = ({children}) => {
       bodyEl.style.paddingInlineEnd = '0'
     }
   }, [isNavExpanded])
+
+  //   useEffect(() => {
+  //     const mediaQuery = window.matchMedia('(min-width: 768px)')
+
+  //     // Define a function to handle media query changes
+  //     function handleMediaQueryChange(event) {
+  //       if (event.matches && isNavExpanded) {
+  //         console.log('navToggled')
+  //       }
+  //     }
+
+  //     // Call the handler initially
+  //     handleMediaQueryChange(mediaQuery)
+
+  //     // Add event listener to handle window resize
+  //     window.addEventListener('resize', handleMediaQueryChange)
+
+  //     // Clean up the event listener when the component unmounts
+  //     return () => {
+  //       window.removeEventListener('resize', handleMediaQueryChange)
+  //     }
+  //   }, [])
 
   return (
     <NxtWatchContext.Provider

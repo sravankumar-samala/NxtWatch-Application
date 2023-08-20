@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const ContentContainer = styled.div`
   margin-block: 0 5px;
 `
-
+// font size for this tittle assigned inside their respective component styles
 export const Title = styled.p`
-  font-size: var(--fs-h3);
   font-weight: 600;
   color: var(--clr-para-accent);
 

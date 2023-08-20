@@ -25,6 +25,11 @@ export const VideoItemContentContainer = styled.div`
   gap: 1em;
   align-items: flex-start;
 
+  // separate font size for trending and saved videos title
+  & > div > p:first-child {
+    font-size: var(--fs-h3-gaming);
+  }
+
   @media (max-width: 575px) {
     padding-inline: 1em;
   }

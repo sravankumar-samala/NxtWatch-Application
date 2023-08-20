@@ -17,3 +17,10 @@ body {
   display: grid;
   place-items: center;
 }
+.flex {
+  display: flex;
+  gap: 1em;
+}
+.justify-between {
+  justify-content: space-between;
+}

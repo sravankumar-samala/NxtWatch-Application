@@ -73,6 +73,11 @@ export const VideoItemContainer = styled.li`
 export const VideoItemContentContainer = styled.div`
   display: flex;
   gap: 0.7em;
+
+  // separate font size for videos item title
+  & > div > p:first-child {
+    font-size: var(--fs-h3);
+  }
 `
 
 export const ProfileImageContainer = styled.div`

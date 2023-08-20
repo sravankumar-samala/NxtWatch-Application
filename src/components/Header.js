@@ -1,4 +1,4 @@
-// import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -26,6 +26,8 @@ import {
 
 function Header({history}) {
   const {isLightTheme, dispatch} = useNxtContext()
+  //   const isSmallScreen = window.matchMedia('(max-width: 768px)')
+  //   console.log(isSmallScreen.matches)
 
   // useMediaQuery hook is from external library "react-responsive"
   //   const isSmallScreen = useMediaQuery({query: '(max-width: 768px)'})
@@ -48,7 +50,7 @@ function Header({history}) {
         </ThemeButton>
 
         {/* hamburger and image displayed according to screen sizes */}
-        {/* {isSmallScreen ? (
+        {/* {isSmallScreen.matches ? (
           <SmallScreenButton type="button" onClick={handleNavToggle}>
             <GiHamburgerMenu />
           </SmallScreenButton>
@@ -67,27 +69,43 @@ function Header({history}) {
           alt="profile"
         />
 
-        <StyledPopup
-          // buttons displayed on different screen sizes
-          trigger={
-            // // // isSmallScreen ? (
-            // // <SmallScreenButton type="button">
-            // //   <FiLogOut />
-            // // </SmallScreenButton>
-            // // // ) : (
-            // <LogoutButton type="button">Logout</LogoutButton>
-            // // )
-            <LogoutButton type="button">Logout</LogoutButton>
-          }
-          modal
-          nested
-        >
+        <StyledPopup trigger={<TriggerButton />} modal nested>
           {close => <LogoutPopup close={close} history={history} />}
         </StyledPopup>
       </HeaderNavContainer>
     </HeaderContainer>
   )
 }
+
+const TriggerButton = React.forwardRef(() => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768) // Adjust the breakpoint as needed
+    }
+
+    handleResize() // Check on initial render
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  return (
+    <>
+      {isSmallScreen ? (
+        <SmallScreenButton type="button">
+          <FiLogOut />
+        </SmallScreenButton>
+      ) : (
+        <LogoutButton type="button">Logout</LogoutButton>
+      )}
+    </>
+  )
+})
 
 function AppLogo({isLightTheme}) {
   return (
