@@ -10,6 +10,8 @@ const initialState = {
 
 const reducer = (state, action) => {
   let newIsLightTheme
+  let savedVideoId
+
   switch (action.type) {
     case 'toggleTheme':
       newIsLightTheme = !state.isLightTheme
@@ -19,6 +21,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         savedVideosList: state.savedVideosList.concat(action.payload),
+      }
+    case 'removeFromSavedVideos':
+      savedVideoId = action.payload.id
+      return {
+        ...state,
+        savedVideosList: state.savedVideosList.filter(
+          eachVideo => eachVideo.id !== savedVideoId,
+        ),
       }
     case 'toggleNavExpanded':
       return {...state, isNavExpanded: !state.isNavExpanded}
@@ -43,27 +53,27 @@ const NxtWatchContextProvider = ({children}) => {
     [isLightTheme],
   )
 
-  useEffect(() => {
-    const bodyEl = document.body
-    const mediaQuery = window.matchMedia('(max-width: 767px)')
+  //   useEffect(() => {
+  //     const bodyEl = document.body
+  //     const mediaQuery = window.matchMedia('(max-width: 767px)')
 
-    if (isNavExpanded && mediaQuery.matches) {
-      bodyEl.classList.add('hide-body-overflow')
-      bodyEl.style.paddingInlineEnd = '9px'
-    } else {
-      bodyEl.classList.remove('hide-body-overflow')
-      bodyEl.style.paddingInlineEnd = '0'
-    }
-  }, [isNavExpanded])
+  //     if (isNavExpanded && mediaQuery.matches) {
+  //       bodyEl.classList.add('hide-body-overflow')
+  //       bodyEl.style.paddingInlineEnd = '9px'
+  //     } else {
+  //       bodyEl.classList.remove('hide-body-overflow')
+  //       bodyEl.style.paddingInlineEnd = '0'
+  //     }
+  //   }, [isNavExpanded])
 
   //   useEffect(() => {
   //     const mediaQuery = window.matchMedia('(min-width: 768px)')
 
   //     // Define a function to handle media query changes
   //     function handleMediaQueryChange(event) {
-  //       if (event.matches && isNavExpanded) {
-  //         console.log('navToggled')
-  //       }
+  //       if (event.matches) {
+  //         console.log('size increased')
+  //       } else console.log('size reduced')
   //     }
 
   //     // Call the handler initially
@@ -72,7 +82,7 @@ const NxtWatchContextProvider = ({children}) => {
   //     // Add event listener to handle window resize
   //     window.addEventListener('resize', handleMediaQueryChange)
 
-  //     // Clean up the event listener when the component unmounts
+  //     // Clean up the event listener when the component un-mounts
   //     return () => {
   //       window.removeEventListener('resize', handleMediaQueryChange)
   //     }

@@ -8,7 +8,6 @@ const updateVideosList = videosList =>
   videosList.map(obj => convertJsonIntoJsObject(obj))
 
 export default function VideosSuccessView({data, apiStatus, retry}) {
-  console.log('render')
   const videosList =
     apiStatus === 'Success' ? updateVideosList(data.videos) : []
 

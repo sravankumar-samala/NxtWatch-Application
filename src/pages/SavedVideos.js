@@ -23,7 +23,10 @@ export default function SavedVideos() {
       <Sidebar />
       <PageLayoutContainer pageName="Saved Videos">
         {savedVideosList.length ? (
-          <TrendingSavedUnifiedSuccessView videosData={savedVideosList} />
+          <TrendingSavedUnifiedSuccessView
+            videosData={savedVideosList}
+            component="savedVideos"
+          />
         ) : (
           <NoSavedVideosView />
         )}

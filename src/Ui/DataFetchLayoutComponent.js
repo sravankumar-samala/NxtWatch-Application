@@ -16,7 +16,6 @@ export default function DataFetchLayoutComponent({
   componentName,
 }) {
   const {apiStatus, data, fetchData} = useFetch()
-  console.log(data)
 
   useEffect(() => {
     fetchData(url)

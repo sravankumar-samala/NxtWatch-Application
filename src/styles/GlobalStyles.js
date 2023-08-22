@@ -9,14 +9,11 @@ const GlobalStyles = createGlobalStyle`
      --clr-bg-secondary:  #ebebeb;
      --clr-para-accent: #232323;
      --clr-button: #d1d5db;
-     --clr-bg-input: #f3f4f6;
      --clr-login-label: #616e7c;
      --clr-para: #616e7c;
      --clr-h1: #2D2B3B;
      --clr-bg-nav-item: #d6d6d6;
      --clr-logout-btn: #3b82f6;
-     --color-red: #f52c30;
-
     }
 
     &[data-theme='dark']{
@@ -26,13 +23,17 @@ const GlobalStyles = createGlobalStyle`
      --clr-bg-secondary:  #232323;
      --clr-para-accent: #f3f4f6;
      --clr-button: #616e7c;
-     --clr-para: #9ca3af; 
+     --clr-para: #64748b;
      --clr-login-label: #f9f9f9;
      --clr-h1: #F9FAFC;
      --clr-bg-nav-item: #383838;
      --clr-logout-btn: #F9FAFC;
-     --color-red: #f52c30;
     }
+
+    --color-red: #f52c30;
+    --clr-bg-input: #f3f4f6;
+    --clr-video-btn-active: #2563eb;
+    --clr-video-btn-in-active: #64748b;
 
     /* video content fonts  */
     --fs-h3 : clamp(1.3rem, 5vw, 1.7rem);
@@ -230,6 +231,11 @@ export const AppLayoutContainer = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 25ch 1fr;
   }
+`
+export const LoaderContainer = styled.div`
+  display: grid;
+  place-items: center;
+  //   color: var(--clg-para-accent);
 `
 
 export default GlobalStyles

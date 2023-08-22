@@ -8,7 +8,6 @@ import {
 
 export default function VideoItemDetailsSuccess({videoData}) {
   const videoDetails = convertJsonToJsObject(videoData.video_details)
-  console.log(videoDetails)
   const {videoUrl} = videoDetails
   return (
     <>

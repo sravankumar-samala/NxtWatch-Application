@@ -16,6 +16,7 @@ body {
 .loader-container {
   display: grid;
   place-items: center;
+  color: var(--clr-bg-primary);
 }
 .flex {
   display: flex;

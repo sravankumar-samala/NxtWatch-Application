@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef, useMemo} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import {BiSearch} from 'react-icons/bi'
 import useFetch from '../hooks/useFetch'
 import ApiStatusResults from '../services/apiStatusResult'

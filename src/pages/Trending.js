@@ -8,7 +8,10 @@ export default function Trending() {
     <DataFetchLayoutComponent
       url={url}
       renderSuccessView={data => (
-        <TrendingSavedUnifiedSuccessView videosData={data} />
+        <TrendingSavedUnifiedSuccessView
+          videosData={data}
+          component="trending"
+        />
       )}
       componentName="Trending"
     />

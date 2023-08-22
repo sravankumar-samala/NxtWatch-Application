@@ -9,13 +9,19 @@ import {
   ProfileImage,
 } from '../styles/TrendingSavedUnifiedStyles'
 
-export default function TrendingSavedUnifiedSuccessView({videosData}) {
-  const videosList = ConvertJsonToJsObject(videosData.videos)
+export default function TrendingSavedUnifiedSuccessView({
+  videosData,
+  component,
+}) {
+  const videosList =
+    component === 'trending'
+      ? ConvertJsonToJsObject(videosData.videos)
+      : videosData
   //   console.log(videosList)
 
   return (
     <VideosListContainer>
-      {videosList.map(videoObj => (
+      {videosList?.map(videoObj => (
         <VideoItem videoItemObj={videoObj} key={videoObj.id} />
       ))}
     </VideosListContainer>

@@ -1,34 +1,40 @@
+import {
+  VideoContentDetailsContainer,
+  ContentContainerAboveHrLine,
+  HorizontalLine,
+  ChannelDetailsContent,
+  ChannelName,
+  Subscribers,
+  Description,
+} from '../styles/VideoItemDetailsStyles'
+import {VideoItemContentContainer} from '../styles/TrendingSavedUnifiedStyles'
+import {Title, InnerContentContainer} from '../styles/VideoItemContentStyles'
+import ReactionsControlPanel from './ReactionsControlPanel'
+import formatVideoUploadedDuration from '../services/FormatVideoUploadDuration'
+
 export default function VideoContentDetails({videoObj}) {
   const {title, description, publishedAt, viewCount, channel} = videoObj
   const {name, profileImageUrl, subscriberCount} = channel
 
   return (
-    <div>
-      <p>{title}</p>
-      <div className="flex justify-between">
-        <div className="flex">
+    <VideoContentDetailsContainer>
+      <Title>{title}</Title>
+      <ContentContainerAboveHrLine>
+        <InnerContentContainer className="flex">
           <p>{`${viewCount} views`}</p>
-          <p>{publishedAt}</p>
-        </div>
-        <div>
-          <button type="button">Like</button>
-          <button type="button">Dislike</button>
-          <button type="button">Save</button>
-        </div>
-      </div>
-      <hr />
-      <div className="flex">
+          <p>{formatVideoUploadedDuration(publishedAt)}</p>
+        </InnerContentContainer>
+        <ReactionsControlPanel videoObj={videoObj} />
+      </ContentContainerAboveHrLine>
+      <HorizontalLine />
+      <VideoItemContentContainer className="flex">
         <img src={profileImageUrl} alt="channel logo" width="40" height="40" />
-        <div>
-          <div>
-            <p>{name}</p>
-            <p>{subscriberCount}</p>
-          </div>
-          <div>
-            <p>{description}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+        <ChannelDetailsContent>
+          <ChannelName>{name}</ChannelName>
+          <Subscribers>{`${subscriberCount} subscribers`}</Subscribers>
+        </ChannelDetailsContent>
+      </VideoItemContentContainer>
+      <Description>{description}</Description>
+    </VideoContentDetailsContainer>
   )
 }

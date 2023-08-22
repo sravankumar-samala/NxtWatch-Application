@@ -69,7 +69,11 @@ function Header({history}) {
           alt="profile"
         />
 
-        <StyledPopup trigger={<TriggerButton />} modal nested>
+        <StyledPopup
+          trigger={<LogoutButton type="button">Logout</LogoutButton>}
+          modal
+          nested
+        >
           {close => <LogoutPopup close={close} history={history} />}
         </StyledPopup>
       </HeaderNavContainer>
@@ -77,35 +81,35 @@ function Header({history}) {
   )
 }
 
-const TriggerButton = React.forwardRef(() => {
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
+// const TriggerButton = React.forwardRef(() => {
+//   const [isSmallScreen, setIsSmallScreen] = useState(false)
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 768) // Adjust the breakpoint as needed
-    }
+//   useEffect(() => {
+//     const handleResize = () => {
+//       setIsSmallScreen(window.innerWidth <= 768) // Adjust the breakpoint as needed
+//     }
 
-    handleResize() // Check on initial render
+//     handleResize() // Check on initial render
 
-    window.addEventListener('resize', handleResize)
+//     window.addEventListener('resize', handleResize)
 
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+//     return () => {
+//       window.removeEventListener('resize', handleResize)
+//     }
+//   }, [])
 
-  return (
-    <>
-      {isSmallScreen ? (
-        <SmallScreenButton type="button">
-          <FiLogOut />
-        </SmallScreenButton>
-      ) : (
-        <LogoutButton type="button">Logout</LogoutButton>
-      )}
-    </>
-  )
-})
+//   return (
+//     <>
+//       {isSmallScreen ? (
+//         <SmallScreenButton type="button">
+//           <FiLogOut />
+//         </SmallScreenButton>
+//       ) : (
+//         <LogoutButton type="button">Logout</LogoutButton>
+//       )}
+//     </>
+//   )
+// })
 
 function AppLogo({isLightTheme}) {
   return (

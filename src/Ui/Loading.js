@@ -1,9 +1,15 @@
 import Loader from 'react-loader-spinner'
+import {LoaderContainer} from '../styles/GlobalStyles'
 
 export default function LoadingView() {
   return (
-    <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#000000" height="50" width="50" />
-    </div>
+    <LoaderContainer data-testid="loader">
+      <Loader
+        type="ThreeDots"
+        color="var(--clr-para-accent)"
+        height="50"
+        width="50"
+      />
+    </LoaderContainer>
   )
 }
