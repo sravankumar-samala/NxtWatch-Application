@@ -5,31 +5,37 @@ const NxtWatchContext = createContext()
 const initialState = {
   isLightTheme: localStorage.getItem('isLightTheme') !== 'false',
   savedVideosList: [],
+  likedVideosList: [],
+  dislikedVideosList: [],
   isNavExpanded: false,
+}
+
+// function that updates state with given conditions and values
+const stateAfterUpdatingVideosList = (state, payload) => {
+  const {videosList, video, actionType} = payload
+
+  return {
+    ...state,
+    [videosList]:
+      actionType === 'add'
+        ? state[videosList].concat(video)
+        : state[videosList].filter(eachVideo => eachVideo.id !== video.id),
+  }
 }
 
 const reducer = (state, action) => {
   let newIsLightTheme
-  let savedVideoId
 
   switch (action.type) {
     case 'toggleTheme':
       newIsLightTheme = !state.isLightTheme
       localStorage.setItem('isLightTheme', newIsLightTheme ? 'true' : 'false')
       return {...state, isLightTheme: newIsLightTheme}
-    case 'addToSavedVideos':
-      return {
-        ...state,
-        savedVideosList: state.savedVideosList.concat(action.payload),
-      }
-    case 'removeFromSavedVideos':
-      savedVideoId = action.payload.id
-      return {
-        ...state,
-        savedVideosList: state.savedVideosList.filter(
-          eachVideo => eachVideo.id !== savedVideoId,
-        ),
-      }
+
+    // single action for all the lists in the global state
+    case 'updateVideosList':
+      return stateAfterUpdatingVideosList(state, action.payload)
+
     case 'toggleNavExpanded':
       return {...state, isNavExpanded: !state.isNavExpanded}
     default:
@@ -39,10 +45,16 @@ const reducer = (state, action) => {
 
 const NxtWatchContextProvider = ({children}) => {
   //   const [navToggledBack, setNavToggledBack] = useState(false)
-  const [{isLightTheme, savedVideosList, isNavExpanded}, dispatch] = useReducer(
-    reducer,
-    initialState,
-  )
+  const [
+    {
+      isLightTheme,
+      savedVideosList,
+      likedVideosList,
+      dislikedVideosList,
+      isNavExpanded,
+    },
+    dispatch,
+  ] = useReducer(reducer, initialState)
 
   useEffect(
     () =>
@@ -93,6 +105,8 @@ const NxtWatchContextProvider = ({children}) => {
       value={{
         isLightTheme,
         savedVideosList,
+        likedVideosList,
+        dislikedVideosList,
         isNavExpanded,
         dispatch,
       }}

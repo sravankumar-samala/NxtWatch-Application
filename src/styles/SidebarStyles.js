@@ -41,7 +41,6 @@ export const SidebarOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 9;
   transition: background-color 0.3s ease-in-out;
-  //   cursor: url('https://cdn.pixabay.com/photo/2022/03/23/02/48/cross-7086307_1280.png');
   cursor: pointer;
 
   @media (min-width: 768px) {
@@ -61,12 +60,12 @@ export const NavLinksContainer = styled.ul`
     font-weight: 500;
   }
 
-  & .activeNavLink {
+  & a.active {
     font-weight: 600;
     background-color: var(--clr-bg-nav-item);
   }
 
-  & .activeNavLink svg {
+  & a.active svg {
     color: #f52c30;
   }
 
@@ -112,7 +111,7 @@ export const SocialButton = styled.button`
     width: 30px;
 
     @media (max-width: 768px) {
-      width: 20px;
+      width: 23px;
     }
   }
 `

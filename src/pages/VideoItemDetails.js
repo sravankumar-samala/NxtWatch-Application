@@ -1,5 +1,4 @@
 import DataFetchLayoutComponent from '../Ui/DataFetchLayoutComponent'
-// import TrendingSavedUnifiedSuccessView from '../Ui/TrendingSavedUnifiedSuccessView'
 import VideoItemDetailsSuccessView from '../Ui/VideoItemDetailsSuccessView'
 
 export default function VideoItemDetails({match}) {
@@ -13,7 +12,7 @@ export default function VideoItemDetails({match}) {
       renderSuccessView={data => (
         <VideoItemDetailsSuccessView videoData={data} />
       )}
-      videoItemRoute
+      videoItemDetailsRoute
       componentName="video-item-details"
     />
   )

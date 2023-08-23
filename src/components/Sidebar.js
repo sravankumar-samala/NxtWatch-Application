@@ -1,5 +1,4 @@
-// import {useEffect} from 'react'
-import {Link, useLocation} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 import {navMenuLinks, socialMediaButtons} from '../data/sidebarData'
 import {
   Navigation,
@@ -13,11 +12,7 @@ import {
 import {useNxtContext} from '../context/GlobalContext'
 
 export default function Sidebar() {
-  const location = useLocation()
   const {isNavExpanded, dispatch} = useNxtContext()
-
-  // Function to check if a link is active
-  const isLinkActive = linkPath => location.pathname === linkPath
 
   const handleNavToggle = () => {
     if (window.innerWidth < 768) {
@@ -32,17 +27,12 @@ export default function Sidebar() {
       <Navigation $navExpanded={isNavExpanded}>
         <NavLinksContainer $navExpanded={isNavExpanded}>
           {navMenuLinks.map(link => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={isLinkActive(link.to) ? 'activeNavLink' : ''}
-              onClick={handleNavToggle}
-            >
+            <NavLink key={link.to} exact to={link.to} onClick={handleNavToggle}>
               <li>
                 {link.icon}
                 <span>{link.label}</span>
               </li>
-            </Link>
+            </NavLink>
           ))}
         </NavLinksContainer>
 
@@ -61,12 +51,3 @@ export default function Sidebar() {
     </>
   )
 }
-
-// LinksList.map(link => (
-//   <NavLink to={link.to} onClick={handleNavToggle}>
-//     <li>
-//       {link.icon}
-//       <span>{link.label}</span>
-//     </li>
-//   </NavLink>
-// ))

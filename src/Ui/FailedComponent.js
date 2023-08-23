@@ -17,10 +17,10 @@ export default function FailedView({failureType, children}) {
     switch (type) {
       case 'apiFailure':
         return [apiFailedImg, 'failure view']
-      case 'noSavedVideos':
+      case 'noSavedAndLikedVideos':
         return [noSavedVideosImage, 'no saved videos']
       case 'noData':
-        return [noDataImage, 'not found']
+        return [noDataImage, 'not videos']
       default:
         return null
     }

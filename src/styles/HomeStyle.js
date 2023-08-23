@@ -1,27 +1,64 @@
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
-  background-color: var(--clr-bg-primary-home);
-  padding-block: 2em;
+  background-color: var(--clr-bg-primary);
+  padding-block-end: 2em;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   gap: 2em;
   place-items: center;
-  padding: 1.5em;
+`
+
+export const PremiumBannerContainer = styled.div`
+  width: 100%;
+  position: relative;
+  background: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: clamp(1em, 3vw, 2em) 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1em, 3vw, 2em);
+
+  & p {
+    font-size: var(--fs-h3-gaming);
+  }
+
+  & img {
+    width: min(30vw, 140px);
+  }
+
+  & button[data-testid='close'] {
+    padding: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    position: absolute;
+    top: 10px;
+    right: 2vw;
+  }
+
+  & button:last-child {
+    border: 1px solid black;
+    font-size: var(--fs-para2);
+    font-weight: bold;
+  }
 `
 
 export const HomeVideosContainer = styled.div`
   justify-self: stretch;
+  padding-inline: 1.5em;
 `
 export const FormContainer = styled.form`
   border: 1px solid var(--clr-button);
   display: flex;
   align-items: center;
-  width: min(50ch, 100%);
-  margin: 0 auto;
+  width: min(50ch, 80%);
+  margin-inline: auto;
+  margin-top: ${({$isBannerActive}) => ($isBannerActive ? '0' : '2.7em')};
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: -1px 1px 2px var(--clr-button);
+  font-size: var(--fs-para2);
 
   & input {
     flex-grow: 1;
@@ -36,8 +73,8 @@ export const FormContainer = styled.form`
 `
 
 export const SearchButton = styled.button`
-  padding: 0.5em 0.7em;
-  font-size: 2rem;
+  padding: 0.62em 0.7em;
+  font-size: var(--fs-h3);
   background-color: var(--clr-button);
   color: var(--clr-h1);
 `

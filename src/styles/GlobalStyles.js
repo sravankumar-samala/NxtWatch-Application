@@ -4,8 +4,7 @@ const GlobalStyles = createGlobalStyle`
 :root {
     &[data-theme='light']{
      --clr-bg-body: #ffffff;
-     --clr-bg-primary-home:  #f2f2f2;
-     --clr-bg-primary: #f9f9f9;
+     --clr-bg-primary: #f2f2f2;
      --clr-bg-secondary:  #ebebeb;
      --clr-para-accent: #232323;
      --clr-button: #d1d5db;
@@ -18,7 +17,6 @@ const GlobalStyles = createGlobalStyle`
 
     &[data-theme='dark']{
      --clr-bg-body: #000000;
-     --clr-bg-primary-home: #181818;
      --clr-bg-primary: #0f0f0f;
      --clr-bg-secondary:  #232323;
      --clr-para-accent: #f3f4f6;
@@ -157,6 +155,7 @@ button {
   cursor: pointer;
   outline: none;
   border: none;
+  background-color: transparent;
   padding: 0.5em 1.3em;
 }
 

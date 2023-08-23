@@ -12,13 +12,13 @@ export const PageTitleContainer = styled.div`
   align-items: center;
   gap: 1em;
   padding: 0.5em 0 0.5em 2em;
-  background-color: var(--clr-bg-primary-home);
+  background-color: var(--clr-bg-nav-item);
 
   & svg {
     width: var(--logo-size);
     height: var(--logo-size);
     color: var(--color-red);
-    background-color: var(--clr-bg-nav-item);
+    background-color: var(--clr-bg-secondary);
     border-radius: 50%;
     padding: 0.5em;
 

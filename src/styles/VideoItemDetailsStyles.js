@@ -82,7 +82,7 @@ export const HorizontalLine = styled.hr`
   background-color: var(--clr-bg-nav-item);
   border: none;
   height: 2.5px;
-  margin-block: 2em;
+  margin-block: clamp(1.5em, 2vw, 2em);
 `
 
 export const ChannelDetailsContent = styled.div``

@@ -1,18 +1,16 @@
 import {useState, useEffect, useRef} from 'react'
 import {BiSearch} from 'react-icons/bi'
 import useFetch from '../hooks/useFetch'
+import PremiumBanner from '../Ui/PremiumBanner'
 import ApiStatusResults from '../services/apiStatusResult'
-import {AppLayoutContainer} from '../styles/GlobalStyles'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
 import VideosSuccessView from '../Ui/VideosSuccessView'
 import FailedView from '../Ui/FailedComponent'
-// import {useNxtContext} from '../context/GlobalContext'
 import {MainContainer, FormContainer, SearchButton} from '../styles/HomeStyle'
 import {Heading, Paragraph, Button} from '../styles/FailedComponentStyles'
 
 // main component starts here
 export default function Home() {
+  const [showBanner, setShowBanner] = useState(true)
   const [fetchTrigger, setFetchTrigger] = useState(true)
   const searchValueRef = useRef('')
   const {apiStatus, data, fetchData} = useFetch()
@@ -26,6 +24,8 @@ export default function Home() {
 
     return () => setFetchTrigger(false)
   }, [fetchTrigger, searchValueRef, fetchData, data])
+
+  const handlePremiumBanner = () => setShowBanner(prev => !prev)
 
   const handleSearch = e => {
     e.preventDefault()
@@ -57,19 +57,17 @@ export default function Home() {
   )
 
   return (
-    <AppLayoutContainer data-testid="home">
-      <Header />
-      <Sidebar />
-      <MainContainer>
-        <FormContainer onSubmit={handleSearch}>
-          <input type="text" ref={searchValueRef} placeholder="Search" />
-          <SearchButton type="submit" data-testid="searchButton">
-            <BiSearch />
-          </SearchButton>
-        </FormContainer>
+    <MainContainer>
+      {showBanner && <PremiumBanner handleShowBanner={handlePremiumBanner} />}
 
-        {ApiStatusResults(apiStatus, SuccessView, ApiFailedView)}
-      </MainContainer>
-    </AppLayoutContainer>
+      <FormContainer onSubmit={handleSearch} $isBannerActive={showBanner}>
+        <input type="search" ref={searchValueRef} placeholder="Search" />
+        <SearchButton type="submit" data-testid="searchButton">
+          <BiSearch />
+        </SearchButton>
+      </FormContainer>
+
+      {ApiStatusResults(apiStatus, SuccessView, ApiFailedView)}
+    </MainContainer>
   )
 }

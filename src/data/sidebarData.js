@@ -1,7 +1,8 @@
-import {AiFillHome} from 'react-icons/ai'
+import {AiFillHome, AiFillLike} from 'react-icons/ai'
 import {FaFire} from 'react-icons/fa'
 import {IoGameController} from 'react-icons/io5'
 import {MdVideoLibrary} from 'react-icons/md'
+// import {BiLike} from 'react-icons/bi'
 
 export const navMenuLinks = [
   {
@@ -23,6 +24,11 @@ export const navMenuLinks = [
     to: '/saved-videos',
     icon: <MdVideoLibrary />,
     label: 'Saved videos',
+  },
+  {
+    to: '/liked-videos',
+    icon: <AiFillLike />,
+    label: 'Liked Videos',
   },
 ]
 

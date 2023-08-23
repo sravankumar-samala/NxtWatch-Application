@@ -1,8 +1,5 @@
 import {useEffect} from 'react'
 import useFetch from '../hooks/useFetch'
-import {AppLayoutContainer} from '../styles/GlobalStyles'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
 import PageLayoutContainer from './PageLayoutContainer'
 import apiStatusResults from '../services/apiStatusResult'
 import FailedView from './FailedComponent'
@@ -11,7 +8,7 @@ import {VideoItemDetailsContainer} from '../styles/VideoItemDetailsStyles'
 
 export default function DataFetchLayoutComponent({
   url,
-  videoItemRoute,
+  videoItemDetailsRoute,
   renderSuccessView,
   componentName,
 }) {
@@ -39,10 +36,8 @@ export default function DataFetchLayoutComponent({
   )
 
   return (
-    <AppLayoutContainer data-testid={componentName.toLowerCase()}>
-      <Header />
-      <Sidebar />
-      {!videoItemRoute ? (
+    <>
+      {!videoItemDetailsRoute ? (
         <PageLayoutContainer pageName={componentName}>
           {apiStatusResults(apiStatus, SuccessView, ApiFailureView)}
         </PageLayoutContainer>
@@ -51,6 +46,6 @@ export default function DataFetchLayoutComponent({
           {apiStatusResults(apiStatus, SuccessView, ApiFailureView)}
         </VideoItemDetailsContainer>
       )}
-    </AppLayoutContainer>
+    </>
   )
 }

@@ -1,6 +1,8 @@
 import {FaFire} from 'react-icons/fa'
 import {IoGameController} from 'react-icons/io5'
 import {MdVideoLibrary} from 'react-icons/md'
+// import {BiLike} from 'react-icons/bi'
+import {AiFillLike} from 'react-icons/ai'
 import {
   PageContainer,
   PageTitleContainer,
@@ -15,6 +17,8 @@ function renderPageLogo(pageName) {
       return <IoGameController />
     case 'Saved Videos':
       return <MdVideoLibrary />
+    case 'Liked Videos':
+      return <AiFillLike />
     default:
       return null
   }

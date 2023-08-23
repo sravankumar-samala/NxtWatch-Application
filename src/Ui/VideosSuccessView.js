@@ -14,7 +14,7 @@ export default function VideosSuccessView({data, apiStatus, retry}) {
   const NoDataView = () => (
     <FailedView failureType="noData">
       <Heading>No Search results found</Heading>
-      <Paragraph>Try different keywords or remove search filter</Paragraph>
+      <Paragraph>Try different key words or remove search filter</Paragraph>
       <Button type="button" onClick={retry}>
         Retry
       </Button>

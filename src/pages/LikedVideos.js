@@ -4,25 +4,25 @@ import TrendingSavedUnifiedSuccessView from '../Ui/TrendingSavedUnifiedSuccessVi
 import FailedView from '../Ui/FailedComponent'
 import {Heading, Paragraph} from '../styles/FailedComponentStyles'
 
-export default function SavedVideos() {
-  const {savedVideosList} = useNxtContext()
+export default function LikedVideos() {
+  const {likedVideosList} = useNxtContext()
 
-  const NoSavedVideosView = () => (
+  const NoLikedVideosView = () => (
     <FailedView failureType="noSavedAndLikedVideos">
-      <Heading>No saved videos found</Heading>
-      <Paragraph>You can save your videos while watching them</Paragraph>
+      <Heading>No liked videos found</Heading>
+      <Paragraph>You can save your liked videos while watching them</Paragraph>
     </FailedView>
   )
 
   return (
-    <PageLayoutContainer pageName="Saved Videos">
-      {savedVideosList.length ? (
+    <PageLayoutContainer pageName="Liked Videos">
+      {likedVideosList.length ? (
         <TrendingSavedUnifiedSuccessView
-          videosData={savedVideosList}
+          videosData={likedVideosList}
           component="savedVideos"
         />
       ) : (
-        <NoSavedVideosView />
+        <NoLikedVideosView />
       )}
     </PageLayoutContainer>
   )
